@@ -1,0 +1,9 @@
+{
+    "n_dense_layers": 1,
+    "dense_0_units": 338,
+    "dense_0_dropout": 0.26566216153582833,
+    "learning_rate": 0.0006786812621794948,
+    "Optimizer": "AdamW",
+    "sgd_momentum": 6.777725547825189e-05,
+    "adamw_weight_decay": 0.0407097703222319
+}
