@@ -1,4 +1,4 @@
-# Sentimen Analysis on Keluhan Istri Data
+# Sentiment Analysis on Keluhan Istri Data
 
 - **Dataset:** Data Keluhan Istri (Data/RawData.csv)
 - **Tasks:** Indonesian Text Cleaning, Sentiment Classification (multi-class)
