@@ -80,7 +80,7 @@ Tabel berikut merangkum hasil utama pada **test set** (macro F1, macro precision
   - XGBClassifier lebih stabil di semua kelas, dengan kombinasi precision dan recall yang seimbang.
   - ANN cenderung masih kesulitan terutama di kelas minoritas, yang terlihat dari macro recall yang lebih rendah (0.56).
 
-### Confusion Matrix
+### 🔍 Confusion Matrix
 
 XGB Classifier
 ![XGBClassifier](Images/XGBMat.png)
