@@ -1,61 +1,64 @@
 # Sentimen Analysis on Keluhan Istri Data
 
-- **Dataset:** [Airbnb NYC 2019](https://www.kaggle.com/dgomonov/new-york-city-airbnb-open-data)
-- **Tasks:** Indonesian Text Cleaning, Sentiment Modeling
-- **Metrics:** F1 Score
-- **Goal:**
+- **Dataset:** Data Keluhan Istri (Data/RawData.csv)
+- **Tasks:** Indonesian Text Cleaning, Sentiment Classification (multi-class)
+- **Metrics:** Macro F1 Score
+- **Goal:** Membangun model klasifikasi sentimen untuk teks keluhan istri berbahasa Indonesia (informal & campur-campur), dengan fokus pada preprocessing bahasa Indonesia dan evaluasi menggunakan F1 (macro) agar kelas minoritas tetap terjaga performanya.
 
 ## 📌 Overview
 
-- **Problem:** Increasing RMSE score for AirBnB price prediction, by doing some Feature Engineering
-- **Dataset:** [New York City AirBnB Open Data](https://www.kaggle.com/datasets/dgomonov/new-york-city-airbnb-open-data)
-- **Approach:** EDA → Feature Engineering → Modeling → Evaluation → Deployment.
-- **Tools:** Python, Pandas, Scikit-learn.
+- Teks keluhan bersifat panjang, emosional, dan sangat informal (slang, campuran bahasa, emoji).
+- **Tujuan:** membangun model yang bisa mengklasifikasikan keluhan ke beberapa label sentimen sehingga bisa dianalisis lebih lanjut (misalnya untuk insight psikologis/sosial).
+- Workflow utama:
+  1. EDA awal.
+  2. Pembersihan & normalisasi teks bahasa Indonesia.
+  3. TF-IDF feature extraction.
+  4. Modeling dengan XGBoost dan ANN (PyTorch + Optuna).
+  5. Evaluasi dengan macro F1.
 
 ## 📊 Exploratory Data Analysis
 
-Key insights from data exploration:
+Notebook: 01EDA.ipynb & 03CleanedEDA.ipynb
 
-- Distribution of target/labels.
-- Missing values or outliers.
-- Interesting correlations or trends.
+- ±3k baris teks keluhan dengan label numerik.
+- Tidak ada missing value di kolom utama, tapi ada duplikasi yang di-drop pada tahap cleaning.
+- EDA mencakup:
+  - Distribusi kelas label.
+  - Panjang teks (kata/karakter).
+  - Kata & n-gram yang sering muncul (mis. via WordCloud).
 
-📷 _[Insert example plots or figures here]_
+## 🧹 Text Cleaning (Bahasa Indonesia)
 
-## 🤖 Models & Techniques
+**Notebook:** 02DataCleaning.ipynb
 
-- **Baseline Model:** (e.g., Logistic Regression, ARIMA) → metric score.
-- **Advanced Model(s):** (e.g., XGBoost, LSTM, BERT) → metric score.
-- **Feature Engineering:** Describe any created/engineered features.
-- **Hyperparameter Tuning:** Grid search / Random search / Bayesian optimization.
+**Langkah utama:**
+- Lowercase.
+- Menghapus emoji, URL, angka tak relevan, dan karakter non-alfabet.
+- Normalisasi spasi dan line break.
+- Stopwords bahasa Indonesia + beberapa kata domain-spesifik.
+- Normalisasi slang (misal variasi “bund/bunda/bun”) dengan kamus.
 
-📊 _Comparison Table:_
+**Output:** Clean Data (Data/CleanData.csv) berisi kolom text (bersih) dan label.
 
-| Model            | Metric (e.g., RMSE / F1) |
-| ---------------- | ------------------------ |
-| Baseline         | 0.512                    |
-| Advanced Model 1 | 0.431                    |
-| Advanced Model 2 | 0.387 ✅                 |
+## 🤖 Modeling
 
-## 📈 Results
+### Feature Representation:
+- TF-IDF (unigram + n-gram) menggunakan TfidfVectorizer (scikit-learn).
 
-- Main performance results.
-- Visualizations (e.g., confusion matrix, SHAP plots, prediction samples).
+### Models:
+**Notebook:** 04XGBModel.ipynb & 05ANNModel.ipynb
+- Baseline: TF-IDF + XGBClassifier
+- Advance: TF-IDF + ANN
 
-📷 _[Insert results screenshot or chart]_
+### Hyperparameter Tuning
+- GridSearchCV untuk hyperparameter tuning
 
-## 🔍 Explainability
+## 📈 Results & Interpretation
 
-- Feature importance / SHAP summary.
-- Example of model interpretability.
-
-📷 _[Insert SHAP plot / attention heatmap]_
-
-## 🌐 Deployment
-
-- **Demo App:** [Link to Streamlit/Gradio app](#)
-- **Run locally:**
-  ```bash
-  pip install -r requirements.txt
-  streamlit run app/app.py
-  ```
+- Evaluasi utama: macro F1 untuk menjaga performa di kelas minoritas.
+- Analisis di notebook mencakup:
+  - Classification report & confusion matrix.
+  - Contoh teks yang salah klasifikasi.
+- Insight yang bisa di-highlight:
+  - Kelas yang paling sering tertukar.
+  - N-gram yang paling kuat terkait kelas tertentu.
