@@ -82,8 +82,16 @@ Tabel berikut merangkum hasil utama pada **test set** (macro F1, macro precision
 
 ### 🔍 Confusion Matrix
 
-XGB Classifier
+#### TF-IDF + XGBClassifier
 ![XGBClassifier](Images/XGBMat.png)
 
-ANN Classifier
+- Kelas 0 sangat dominan dan diprediksi dengan baik (banyak titik di diagonal: 0→0).
+- Kelas 1 dan 2 masih memiliki beberapa misclassifications, tetapi XGBClassifier relatif stabil di ketiga kelas.
+- Hasil ini konsisten dengan macro F1 yang tinggi (0.84).
+
+#### TF-IDF + ANN
 ![ANN Classifier](Images/ANNMat.png)
+
+- Model ANN masih sering salah memprediksi kelas 1 dan 2 sebagai kelas 0.
+- Misclassifications ini menjelaskan mengapa macro F1 ANN turun dibanding XGBClassifier (0.61 vs 0.84).
+- ANN berpotensi ditingkatkan dengan tuning lebih lanjut, penanganan class imbalance, atau fitur tambahan.
