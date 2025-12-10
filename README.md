@@ -58,7 +58,8 @@
 
 ### Hyperparameter Tuning
 
-- GridSearchCV untuk hyperparameter tuning
+- GridSearchCV untuk hyperparameter tuning XGBClassifier
+- Optuna untuk hyperparameter tuning ANN Classifier
 
 ## 📈 Results & Interpretation
 
