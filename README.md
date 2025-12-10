@@ -4,6 +4,8 @@
 - **Tasks:** Indonesian Text Cleaning, Sentiment Classification (multi-class)
 - **Metrics:** Macro F1 Score
 - **Goal:** Membangun model klasifikasi sentimen untuk teks keluhan istri berbahasa Indonesia (informal & campur-campur), dengan fokus pada preprocessing bahasa Indonesia dan evaluasi menggunakan F1 (macro) agar kelas minoritas tetap terjaga performanya.
+- **Collaborators:**
+  - Modeling helped by [Andreas](https://github.com/Andreas-Lukito)
 
 ## 📌 Overview
 
@@ -83,6 +85,7 @@ Tabel berikut merangkum hasil utama pada **test set** (macro F1, macro precision
 ### 🔍 Confusion Matrix
 
 #### TF-IDF + XGBClassifier
+
 ![XGBClassifier](Images/XGBMat.png)
 
 - Kelas 0 sangat dominan dan diprediksi dengan baik (banyak titik di diagonal: 0→0).
@@ -90,6 +93,7 @@ Tabel berikut merangkum hasil utama pada **test set** (macro F1, macro precision
 - Hasil ini konsisten dengan macro F1 yang tinggi (0.84).
 
 #### TF-IDF + ANN
+
 ![ANN Classifier](Images/ANNMat.png)
 
 - Model ANN masih sering salah memprediksi kelas 1 dan 2 sebagai kelas 0.
