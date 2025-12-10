@@ -32,6 +32,7 @@
 **Notebook:** 02DataCleaning.ipynb
 
 **Langkah utama:**
+
 - Lowercase.
 - Menghapus emoji, URL, angka tak relevan, dan karakter non-alfabet.
 - Normalisasi spasi dan line break.
@@ -45,13 +46,16 @@
 **Notebook:** 04XGBModel.ipynb & 05ANNModel.ipynb
 
 ### Feature Representation:
+
 - TF-IDF (unigram + n-gram) menggunakan TfidfVectorizer (scikit-learn).
 
 ### Models:
+
 - Baseline: TF-IDF + XGBClassifier
 - Advance: TF-IDF + ANN
 
 ### Hyperparameter Tuning
+
 - GridSearchCV untuk hyperparameter tuning
 
 ## 📈 Results & Interpretation
@@ -65,8 +69,8 @@ Tabel berikut merangkum hasil utama pada **test set** (macro F1, macro precision
 | TF-IDF + XGBClassifier          | Test    | 0.84     | 0.91              | 0.79           |
 | TF-IDF + ANN (PyTorch + Optuna) | Test    | 0.61     | 0.70              | 0.56           |
 
-- **Akurasi XGBClassifier:** 0.90  
-- **Akurasi ANN:** 0.78  
+- **Akurasi XGBClassifier:** 0.90
+- **Akurasi ANN:** 0.78
 
 ### 🧪 Hasil Utama
 
@@ -75,3 +79,8 @@ Tabel berikut merangkum hasil utama pada **test set** (macro F1, macro precision
 - Secara umum:
   - XGBClassifier lebih stabil di semua kelas, dengan kombinasi precision dan recall yang seimbang.
   - ANN cenderung masih kesulitan terutama di kelas minoritas, yang terlihat dari macro recall yang lebih rendah (0.56).
+
+### Confusion Matrix
+
+![XGBClassifier](Images/XGBMat.png)
+![ANN Model](Images/ANNMat.png)
