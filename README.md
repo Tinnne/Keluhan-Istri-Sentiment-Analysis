@@ -10,11 +10,11 @@
 - Teks keluhan bersifat panjang, emosional, dan sangat informal (slang, campuran bahasa, emoji).
 - **Tujuan:** membangun model yang bisa mengklasifikasikan keluhan ke beberapa label sentimen sehingga bisa dianalisis lebih lanjut (misalnya untuk insight psikologis/sosial).
 - Workflow utama:
-  1. EDA.
-  2. Pembersihan & normalisasi teks bahasa Indonesia.
-  3. TF-IDF feature extraction.
-  4. Modeling dengan XGBoost dan ANN (PyTorch + Optuna).
-  5. Evaluasi dengan macro F1.
+  - EDA.
+  - Pembersihan & normalisasi teks bahasa Indonesia.
+  - TF-IDF feature extraction.
+  - Modeling dengan XGBoost dan ANN (PyTorch + Optuna).
+  - Evaluasi dengan macro F1.
 
 ## 📊 Exploratory Data Analysis
 
