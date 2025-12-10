@@ -10,7 +10,7 @@
 - Teks keluhan bersifat panjang, emosional, dan sangat informal (slang, campuran bahasa, emoji).
 - **Tujuan:** membangun model yang bisa mengklasifikasikan keluhan ke beberapa label sentimen sehingga bisa dianalisis lebih lanjut (misalnya untuk insight psikologis/sosial).
 - Workflow utama:
-  1. EDA awal.
+  1. EDA.
   2. Pembersihan & normalisasi teks bahasa Indonesia.
   3. TF-IDF feature extraction.
   4. Modeling dengan XGBoost dan ANN (PyTorch + Optuna).
@@ -18,7 +18,7 @@
 
 ## 📊 Exploratory Data Analysis
 
-Notebook: 01EDA.ipynb & 03CleanedEDA.ipynb
+**Notebook:** 01EDA.ipynb & 03CleanedEDA.ipynb
 
 - ±3k baris teks keluhan dengan label numerik.
 - Tidak ada missing value di kolom utama, tapi ada duplikasi yang di-drop pada tahap cleaning.
@@ -42,11 +42,12 @@ Notebook: 01EDA.ipynb & 03CleanedEDA.ipynb
 
 ## 🤖 Modeling
 
+**Notebook:** 04XGBModel.ipynb & 05ANNModel.ipynb
+
 ### Feature Representation:
 - TF-IDF (unigram + n-gram) menggunakan TfidfVectorizer (scikit-learn).
 
 ### Models:
-**Notebook:** 04XGBModel.ipynb & 05ANNModel.ipynb
 - Baseline: TF-IDF + XGBClassifier
 - Advance: TF-IDF + ANN
 
@@ -55,10 +56,22 @@ Notebook: 01EDA.ipynb & 03CleanedEDA.ipynb
 
 ## 📈 Results & Interpretation
 
-- Evaluasi utama: macro F1 untuk menjaga performa di kelas minoritas.
-- Analisis di notebook mencakup:
-  - Classification report & confusion matrix.
-  - Contoh teks yang salah klasifikasi.
-- Insight yang bisa di-highlight:
-  - Kelas yang paling sering tertukar.
-  - N-gram yang paling kuat terkait kelas tertentu.
+### 🔢 Ringkasan Performa Model
+
+Tabel berikut merangkum hasil utama pada **test set** (macro F1, macro precision, dan macro recall).
+
+| Model                           | Dataset | Macro F1 | Precision (macro) | Recall (macro) |
+| ------------------------------- | ------- | -------- | ----------------- | -------------- |
+| TF-IDF + XGBClassifier          | Test    | 0.84     | 0.91              | 0.79           |
+| TF-IDF + ANN (PyTorch + Optuna) | Test    | 0.61     | 0.70              | 0.56           |
+
+- **Akurasi XGBClassifier:** 0.90  
+- **Akurasi ANN:** 0.78  
+
+### 🧪 Hasil Utama
+
+- Model dengan performa terbaik adalah **TF-IDF + XGBClassifier** dengan **macro F1 = 0.84**, **macro precision = 0.91**, dan **macro recall = 0.79** pada test set.
+- Model **TF-IDF + ANN (PyTorch + Optuna)** mendapatkan **macro F1 = 0.61**, **macro precision = 0.70**, dan **macro recall = 0.56**, sehingga masih tertinggal cukup jauh dari XGBClassifier.
+- Secara umum:
+  - XGBClassifier lebih stabil di semua kelas, dengan kombinasi precision dan recall yang seimbang.
+  - ANN cenderung masih kesulitan terutama di kelas minoritas, yang terlihat dari macro recall yang lebih rendah (0.56).
