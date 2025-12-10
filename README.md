@@ -82,5 +82,8 @@ Tabel berikut merangkum hasil utama pada **test set** (macro F1, macro precision
 
 ### Confusion Matrix
 
+XGB Classifier
 ![XGBClassifier](Images/XGBMat.png)
-![ANN Model](Images/ANNMat.png)
+
+ANN Classifier
+![ANN Classifier](Images/ANNMat.png)
