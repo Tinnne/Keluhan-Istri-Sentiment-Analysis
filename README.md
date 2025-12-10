@@ -1,4 +1,4 @@
-<img width="1615" height="406" alt="image" src="https://github.com/user-attachments/assets/f2f3627f-f354-4df7-a2af-354750d33be6" /># Sentiment Analysis on Keluhan Istri Data
+# Sentiment Analysis on Keluhan Istri Data
 
 - **Dataset:** Data Keluhan Istri (Data/RawData.csv)
 - **Tasks:** Indonesian Text Cleaning, Sentiment Classification (multi-class)
